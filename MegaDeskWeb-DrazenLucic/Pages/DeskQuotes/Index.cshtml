@@ -1,0 +1,108 @@
+﻿@page
+@model MegaDeskWeb_DrazenLucic.Pages.DeskQuotes.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].Customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].BaseDeskPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].OrderDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].Width)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].Length)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].SurfaceAreaSurcharge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].SurfaceAreaSurchargeThreshold)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].NumberOfDrawers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].DrawerSurcharge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].SurfaceMaterial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].SurfaceMaterialSurcharge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].ProductionTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].RushOrderSurcharge)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.DeskQuote) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BaseDeskPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Width)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Length)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurfaceAreaSurcharge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurfaceAreaSurchargeThreshold)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfDrawers)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DrawerSurcharge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurfaceMaterial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurfaceMaterialSurcharge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductionTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RushOrderSurcharge)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

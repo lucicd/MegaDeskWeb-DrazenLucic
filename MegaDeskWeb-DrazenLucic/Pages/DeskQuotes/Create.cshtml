@@ -1,0 +1,94 @@
+﻿@page
+@model MegaDeskWeb_DrazenLucic.Pages.DeskQuotes.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>DeskQuote</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DeskQuote.Customer" class="control-label"></label>
+                <input asp-for="DeskQuote.Customer" class="form-control" />
+                <span asp-validation-for="DeskQuote.Customer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeskQuote.BaseDeskPrice" class="control-label"></label>
+                <input asp-for="DeskQuote.BaseDeskPrice" class="form-control" />
+                <span asp-validation-for="DeskQuote.BaseDeskPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeskQuote.OrderDate" class="control-label"></label>
+                <input asp-for="DeskQuote.OrderDate" class="form-control" />
+                <span asp-validation-for="DeskQuote.OrderDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeskQuote.Width" class="control-label"></label>
+                <input asp-for="DeskQuote.Width" class="form-control" />
+                <span asp-validation-for="DeskQuote.Width" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeskQuote.Length" class="control-label"></label>
+                <input asp-for="DeskQuote.Length" class="form-control" />
+                <span asp-validation-for="DeskQuote.Length" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeskQuote.SurfaceAreaSurcharge" class="control-label"></label>
+                <input asp-for="DeskQuote.SurfaceAreaSurcharge" class="form-control" />
+                <span asp-validation-for="DeskQuote.SurfaceAreaSurcharge" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeskQuote.SurfaceAreaSurchargeThreshold" class="control-label"></label>
+                <input asp-for="DeskQuote.SurfaceAreaSurchargeThreshold" class="form-control" />
+                <span asp-validation-for="DeskQuote.SurfaceAreaSurchargeThreshold" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeskQuote.NumberOfDrawers" class="control-label"></label>
+                <input asp-for="DeskQuote.NumberOfDrawers" class="form-control" />
+                <span asp-validation-for="DeskQuote.NumberOfDrawers" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeskQuote.DrawerSurcharge" class="control-label"></label>
+                <input asp-for="DeskQuote.DrawerSurcharge" class="form-control" />
+                <span asp-validation-for="DeskQuote.DrawerSurcharge" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeskQuote.SurfaceMaterial" class="control-label"></label>
+                <input asp-for="DeskQuote.SurfaceMaterial" class="form-control" />
+                <span asp-validation-for="DeskQuote.SurfaceMaterial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeskQuote.SurfaceMaterialSurcharge" class="control-label"></label>
+                <input asp-for="DeskQuote.SurfaceMaterialSurcharge" class="form-control" />
+                <span asp-validation-for="DeskQuote.SurfaceMaterialSurcharge" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeskQuote.ProductionTime" class="control-label"></label>
+                <input asp-for="DeskQuote.ProductionTime" class="form-control" />
+                <span asp-validation-for="DeskQuote.ProductionTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeskQuote.RushOrderSurcharge" class="control-label"></label>
+                <input asp-for="DeskQuote.RushOrderSurcharge" class="form-control" />
+                <span asp-validation-for="DeskQuote.RushOrderSurcharge" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

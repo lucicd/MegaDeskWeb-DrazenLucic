@@ -9,7 +9,7 @@ namespace MegaDeskWeb_DrazenLucic.Models
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public decimal Cost { get; set; }
+        public decimal Value { get; set; }
         public string Comments { get; set; }
     }
 }

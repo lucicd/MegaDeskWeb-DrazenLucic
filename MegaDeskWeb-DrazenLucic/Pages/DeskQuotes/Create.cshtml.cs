@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MegaDeskWeb_DrazenLucic.Models;
+using MegaDeskWeb_DrazenLucic.Pages.Parameters;
 
 namespace MegaDeskWeb_DrazenLucic.Pages.DeskQuotes
 {
@@ -18,8 +19,14 @@ namespace MegaDeskWeb_DrazenLucic.Pages.DeskQuotes
             _context = context;
         }
 
+        public SelectList Drawers { get; set; }
+        public SelectList Materials { get; set; }
+        public SelectList ProductionTimes { get; set; }
         public IActionResult OnGet()
         {
+            Drawers = new ParameterQueries(_context).ListOfDrawers;
+            Materials = new SurfaceMaterialQueries(_context).ListOfMaterials;
+            ProductionTimes = new RushOrderCostQueries(_context).ListOfPrdouctionTimes;
             return Page();
         }
 
@@ -33,10 +40,22 @@ namespace MegaDeskWeb_DrazenLucic.Pages.DeskQuotes
                 return Page();
             }
 
+            var parameterQueries = new ParameterQueries(_context);
+            DeskQuote.BaseDeskPrice = parameterQueries.GetBaseDeskPrice();
+            DeskQuote.SurfaceAreaSurcharge = parameterQueries.GetSurfaceAreaSurchargePerUnit();
+            DeskQuote.SurfaceAreaSurchargeThreshold = parameterQueries.GetSurfaceAreaSurchargeThreshold();
+            DeskQuote.DrawerSurcharge = parameterQueries.GetDrawerCost();
+
+            DeskQuote.SurfaceMaterialSurcharge = new SurfaceMaterialQueries(_context)
+                .GetSurfaceMaterislSurcharge(DeskQuote.SurfaceMaterial);
+
+            DeskQuote.RushOrderSurcharge = new RushOrderCostQueries(_context)
+                .GetRushOrderSurcharge(DeskQuote.ProductionTime, DeskQuote.Width, DeskQuote.Depth);
+       
             _context.DeskQuote.Add(DeskQuote);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Details", new { id = DeskQuote.ID });
         }
     }
 }

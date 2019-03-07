@@ -5,91 +5,155 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Desk Quote Details</h1>
 
 <div>
-    <h4>DeskQuote</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DeskQuote.Customer)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeskQuote.Customer)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DeskQuote.BaseDeskPrice)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeskQuote.BaseDeskPrice)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DeskQuote.OrderDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeskQuote.OrderDate)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DeskQuote.Width)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeskQuote.Width)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DeskQuote.Length)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeskQuote.Length)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DeskQuote.SurfaceAreaSurcharge)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeskQuote.SurfaceAreaSurcharge)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DeskQuote.SurfaceAreaSurchargeThreshold)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeskQuote.SurfaceAreaSurchargeThreshold)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DeskQuote.NumberOfDrawers)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeskQuote.NumberOfDrawers)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DeskQuote.DrawerSurcharge)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeskQuote.DrawerSurcharge)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DeskQuote.SurfaceMaterial)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeskQuote.SurfaceMaterial)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DeskQuote.SurfaceMaterialSurcharge)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeskQuote.SurfaceMaterialSurcharge)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DeskQuote.ProductionTime)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeskQuote.ProductionTime)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DeskQuote.RushOrderSurcharge)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeskQuote.RushOrderSurcharge)
-        </dd>
-    </dl>
+    <table class="table table-bordered table-hover table-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col" style="width: 50%">Description</th>
+                <th scope="col" style="width: 50%">Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">
+                    @Html.DisplayNameFor(model => model.DeskQuote.Customer)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.DeskQuote.Customer)
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    @Html.DisplayNameFor(model => model.DeskQuote.OrderDate)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.DeskQuote.OrderDate)
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    @Html.DisplayNameFor(model => model.DeskQuote.BaseDeskPrice)
+                </th>
+                <td>
+                    $@Html.DisplayFor(model => model.DeskQuote.BaseDeskPrice)
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    @Html.DisplayNameFor(model => model.DeskQuote.Width)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.DeskQuote.Width) inches
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    @Html.DisplayNameFor(model => model.DeskQuote.Depth)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.DeskQuote.Depth) inches
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    @Html.DisplayNameFor(model => model.DeskQuote.CalcSurfaceArea)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.DeskQuote.CalcSurfaceArea) square inches
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    @Html.DisplayNameFor(model => model.DeskQuote.SurfaceAreaSurcharge)
+                </th>
+                <td>
+                    $@Html.DisplayFor(model => model.DeskQuote.SurfaceAreaSurcharge)
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    @Html.DisplayNameFor(model => model.DeskQuote.SurfaceAreaSurchargeThreshold)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.DeskQuote.SurfaceAreaSurchargeThreshold) sq inches
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    @Html.DisplayNameFor(model => model.DeskQuote.CalcSurfaceAreaSurcharge)
+                </th>
+                <td>
+                    $@Html.DisplayFor(model => model.DeskQuote.CalcSurfaceAreaSurcharge)
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    @Html.DisplayNameFor(model => model.DeskQuote.NumberOfDrawers)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.DeskQuote.NumberOfDrawers)
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    @Html.DisplayNameFor(model => model.DeskQuote.DrawerSurcharge)
+                </th>
+                <td>
+                    $@Html.DisplayFor(model => model.DeskQuote.DrawerSurcharge)
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    @Html.DisplayNameFor(model => model.DeskQuote.CalcDrawersSurcharge)
+                </th>
+                <td>
+                    $@Html.DisplayFor(model => model.DeskQuote.CalcDrawersSurcharge)
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    @Html.DisplayNameFor(model => model.DeskQuote.SurfaceMaterial)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.DeskQuote.SurfaceMaterial)
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    @Html.DisplayNameFor(model => model.DeskQuote.SurfaceMaterialSurcharge)
+                </th>
+                <td>
+                    $@Html.DisplayFor(model => model.DeskQuote.SurfaceMaterialSurcharge)
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    @Html.DisplayNameFor(model => model.DeskQuote.ProductionTime)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.DeskQuote.ProductionTime) days
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    @Html.DisplayNameFor(model => model.DeskQuote.RushOrderSurcharge)
+                </th>
+                <td>
+                    $@Html.DisplayFor(model => model.DeskQuote.RushOrderSurcharge)
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    @Html.DisplayNameFor(model => model.DeskQuote.CalcDeskPrice)
+                </th>
+                <td>
+                    $@Html.DisplayFor(model => model.DeskQuote.CalcDeskPrice)
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.DeskQuote.ID">Edit</a> |

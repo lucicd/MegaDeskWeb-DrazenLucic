@@ -20,7 +20,7 @@ namespace MegaDeskWeb_DrazenLucic.Models
         public DateTime OrderDate { get; set; }
 
         public int Width { get; set; }
-        public int Length { get; set; }
+        public int Depth { get; set; }
 
         [Display(Name = "Surface Area Surcharge per Unit")]
         [Column(TypeName = "decimal(18, 2)")]
@@ -28,7 +28,7 @@ namespace MegaDeskWeb_DrazenLucic.Models
         [Display(Name = "Surface Area Surcharge Threshold")]
         public int SurfaceAreaSurchargeThreshold { get; set; }
 
-        [Display(Name = "Number of Drawers")]
+        [Display(Name = "Drawers")]
         public int NumberOfDrawers { get; set; }
         [Display(Name = "Drawer Surcharge per Unit")]
         [Column(TypeName = "decimal(18, 2)")]
@@ -51,7 +51,7 @@ namespace MegaDeskWeb_DrazenLucic.Models
         {
             get
             {
-                return Width * Length;
+                return Width * Depth;
             }
         }
 
@@ -73,7 +73,7 @@ namespace MegaDeskWeb_DrazenLucic.Models
             }
         }
 
-        [Display(Name = "Total Drawwesr Surcharge")]
+        [Display(Name = "Drawers Surcharge")]
         [Column(TypeName = "decimal(18, 2)")]
         public decimal CalcDrawersSurcharge
         {

@@ -22,6 +22,9 @@ namespace MegaDeskWeb_DrazenLucic.Pages.DeskQuotes
         [BindProperty]
         public DeskQuote DeskQuote { get; set; }
 
+        public SelectList Drawers { get; set; }
+        public SelectList Materials { get; set; }
+        public SelectList ProductionTimes { get; set; }
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -35,6 +38,9 @@ namespace MegaDeskWeb_DrazenLucic.Pages.DeskQuotes
             {
                 return NotFound();
             }
+            Drawers = new ParameterQueries(_context).ListOfDrawers;
+            Materials = new SurfaceMaterialQueries(_context).ListOfMaterials;
+            ProductionTimes = new RushOrderCostQueries(_context).ListOfPrdouctionTimes;
             return Page();
         }
 
@@ -44,6 +50,18 @@ namespace MegaDeskWeb_DrazenLucic.Pages.DeskQuotes
             {
                 return Page();
             }
+
+            var parameterQueries = new ParameterQueries(_context);
+            DeskQuote.BaseDeskPrice = parameterQueries.GetBaseDeskPrice();
+            DeskQuote.SurfaceAreaSurcharge = parameterQueries.GetSurfaceAreaSurchargePerUnit();
+            DeskQuote.SurfaceAreaSurchargeThreshold = parameterQueries.GetSurfaceAreaSurchargeThreshold();
+            DeskQuote.DrawerSurcharge = parameterQueries.GetDrawerCost();
+
+            DeskQuote.SurfaceMaterialSurcharge = new SurfaceMaterialQueries(_context)
+                .GetSurfaceMaterislSurcharge(DeskQuote.SurfaceMaterial);
+
+            DeskQuote.RushOrderSurcharge = new RushOrderCostQueries(_context)
+                .GetRushOrderSurcharge(DeskQuote.ProductionTime, DeskQuote.Width, DeskQuote.Depth);
 
             _context.Attach(DeskQuote).State = EntityState.Modified;
 
@@ -63,7 +81,7 @@ namespace MegaDeskWeb_DrazenLucic.Pages.DeskQuotes
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Details", new { id = DeskQuote.ID });
         }
 
         private bool DeskQuoteExists(int id)

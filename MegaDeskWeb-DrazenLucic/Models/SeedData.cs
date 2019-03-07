@@ -18,64 +18,64 @@ namespace MegaDeskWeb_DrazenLucic.Models
             context.Parameter.AddRange(
                 new Parameter
                 {
-                    Name = "Base Desk Cost",
-                    Cost = 200,
+                    Name = "Base Desk Price",
+                    Value = 200,
                     Comments = "each"
                 },
 
                 new Parameter
                 {
                     Name = "Surface Area Surcharge",
-                    Cost = 1,
+                    Value = 1,
                     Comments = "per square inch"
                 },
 
                 new Parameter
                 {
                     Name = "Surface Area Surcharge Threshold",
-                    Cost = 1000,
+                    Value = 1000,
                     Comments = "square inches"
                 },
 
                 new Parameter
                 {
                     Name = "Drawer Cost",
-                    Cost = 50,
+                    Value = 50,
                     Comments = "per drawer"
                 },
 
                 new Parameter
                 {
                     Name = "Max Drawers",
-                    Cost = 7,
+                    Value = 7,
                     Comments = "Maximum number of drawers. The minimum is 0."
                 },
 
                 new Parameter
                 {
                     Name = "Min Width",
-                    Cost = 24,
+                    Value = 24,
                     Comments = "Minimum width of a desk."
                 },
 
                 new Parameter
                 {
                     Name = "Max Width",
-                    Cost = 96,
+                    Value = 96,
                     Comments = "Maximum width of a desk."
-                }
+                },
 
                 new Parameter
                 {
                     Name = "Min Depth",
-                    Cost = 12,
+                    Value = 12,
                     Comments = "Minimum depth of a desk."
                 },
 
                 new Parameter
                 {
                     Name = "Max Depth",
-                    Cost = 48,
+                    Value = 48,
                     Comments = "Maximum depth of a desk."
                 }
             );

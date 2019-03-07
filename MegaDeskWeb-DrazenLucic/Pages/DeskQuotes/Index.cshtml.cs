@@ -18,11 +18,17 @@ namespace MegaDeskWeb_DrazenLucic.Pages.DeskQuotes
             _context = context;
         }
 
-        public IList<DeskQuote> DeskQuote { get;set; }
+        public PaginatedList<DeskQuote> DeskQuote { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(int? pageIndex)
         {
-            DeskQuote = await _context.DeskQuote.ToListAsync();
+            var deskQuotes = from m in _context.DeskQuote
+                             orderby m.ID descending
+                             select m;
+            int pageSize = 5;
+            DeskQuote = await PaginatedList<DeskQuote>.CreateAsync(
+                deskQuotes.AsNoTracking(), pageIndex ?? 1, pageSize);
+            //DeskQuote = await deskQuotes.ToListAsync();
         }
     }
 }

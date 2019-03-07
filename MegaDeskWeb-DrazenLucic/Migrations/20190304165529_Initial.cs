@@ -18,7 +18,7 @@ namespace MegaDeskWeb_DrazenLucic.Migrations
                     BaseDeskPrice = table.Column<decimal>(nullable: false),
                     OrderDate = table.Column<DateTime>(nullable: false),
                     Width = table.Column<int>(nullable: false),
-                    Length = table.Column<int>(nullable: false),
+                    Depth = table.Column<int>(nullable: false),
                     SurfaceAreaSurcharge = table.Column<decimal>(nullable: false),
                     SurfaceAreaSurchargeThreshold = table.Column<int>(nullable: false),
                     NumberOfDrawers = table.Column<int>(nullable: false),
@@ -40,7 +40,7 @@ namespace MegaDeskWeb_DrazenLucic.Migrations
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
-                    Cost = table.Column<decimal>(nullable: false)
+                    Value = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {

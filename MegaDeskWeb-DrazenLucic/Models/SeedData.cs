@@ -42,6 +42,41 @@ namespace MegaDeskWeb_DrazenLucic.Models
                     Name = "Drawer Cost",
                     Cost = 50,
                     Comments = "per drawer"
+                },
+
+                new Parameter
+                {
+                    Name = "Max Drawers",
+                    Cost = 7,
+                    Comments = "Maximum number of drawers. The minimum is 0."
+                },
+
+                new Parameter
+                {
+                    Name = "Min Width",
+                    Cost = 24,
+                    Comments = "Minimum width of a desk."
+                },
+
+                new Parameter
+                {
+                    Name = "Max Width",
+                    Cost = 96,
+                    Comments = "Maximum width of a desk."
+                }
+
+                new Parameter
+                {
+                    Name = "Min Depth",
+                    Cost = 12,
+                    Comments = "Minimum depth of a desk."
+                },
+
+                new Parameter
+                {
+                    Name = "Max Depth",
+                    Cost = 48,
+                    Comments = "Maximum depth of a desk."
                 }
             );
             context.SaveChanges();

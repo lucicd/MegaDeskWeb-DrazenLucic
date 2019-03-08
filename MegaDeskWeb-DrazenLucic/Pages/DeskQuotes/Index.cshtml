@@ -10,11 +10,25 @@
 <p>
     <a class="btn btn-outline-danger" asp-page="Create">Create Desk Quote</a>
 </p>
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Search:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].Customer)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+                    @Html.DisplayNameFor(model => model.DeskQuote[0].Customer)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DeskQuote[0].OrderDate)
@@ -29,7 +43,9 @@
                 @Html.DisplayNameFor(model => model.DeskQuote[0].NumberOfDrawers)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].SurfaceMaterial)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.MaterialSort">
+                    @Html.DisplayNameFor(model => model.DeskQuote[0].SurfaceMaterial)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DeskQuote[0].ProductionTime)

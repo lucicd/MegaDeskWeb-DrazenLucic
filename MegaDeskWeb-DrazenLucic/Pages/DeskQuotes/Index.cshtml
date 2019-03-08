@@ -11,22 +11,29 @@
     <a class="btn btn-outline-danger" asp-page="Create">Create Desk Quote</a>
 </p>
 
-<form asp-page="./Index" method="get">
-    <div class="form-actions no-color">
-        <p>
-            Search:
-            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
-            <input type="submit" value="Search" class="btn btn-default" /> |
-            <a asp-page="./Index">Back to full List</a>
-        </p>
-    </div>
-</form>
+<div class="container">
+    <form class="form-inline" asp-page="./Index" method="get">
+        <div class="form-group mr-2">
+            <label for="SearchString">Search:</label>
+            <input type="text" class="form-control ml-1" name="SearchString" id="SearchString" value="@Model.CurrentFilter" />
+        </div>
+        <div class="btn-group">
+            <button type="submit" class="btn btn-outline-info mr-2">Search</button>
+            <a asp-page="./Index" class="btn btn-outline-info">Full List</a>
+        </div>
+    </form>
+</div>
 
-<table class="table">
-    <thead>
+<table class="table mt-2 table-bordered table-hover table-sm">
+    <thead class="thead-light">
         <tr>
             <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+                <a asp-page="./Index" asp-route-sortOrder="@Model.IDSort">
+                    @Html.DisplayNameFor(model => model.DeskQuote[0].ID)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.CustomerSort">
                     @Html.DisplayNameFor(model => model.DeskQuote[0].Customer)
                 </a>
             </th>
@@ -50,7 +57,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.DeskQuote[0].ProductionTime)
             </th>
-            <th>
+            <th class="text-right">
                 @Html.DisplayNameFor(model => model.DeskQuote[0].CalcDeskPrice)
             </th>
             <th></th>
@@ -59,37 +66,43 @@
     <tbody>
         @foreach (var item in Model.DeskQuote)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Customer)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OrderDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Width) inches
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Depth) inches
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NumberOfDrawers)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SurfaceMaterial)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProductionTime) days
-                </td>
-                <td>
-                    $@Html.DisplayFor(modelItem => item.CalcDeskPrice)
-                </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-                </td>
-            </tr>
+        <tr>
+            <td class="text-center">
+                <a asp-page="./Details" asp-route-id="@item.ID">
+                    @Html.DisplayFor(modelItem => item.ID)
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Width) inches
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Depth) inches
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.NumberOfDrawers)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurfaceMaterial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductionTime) days
+            </td>
+            <td class="text-right">
+                $@Html.DisplayFor(modelItem => item.CalcDeskPrice)
+            </td>
+            <td>
+                <div class="btn-group-sm">
+                    <a class="btn btn-outline-info" asp-page="./Edit" asp-route-id="@item.ID">Edit</a>
+                    <a class="btn btn-outline-info" asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </div>
+            </td>
+        </tr>
         }
     </tbody>
 </table>
@@ -100,12 +113,16 @@
 }
 
 <a asp-page="./Index"
-   asp-route-pageIndex="@(Model.DeskQuote.PageIndex - 1)"
-   class="btn btn-outline-info @prevDisabled">
+    asp-route-sortOrder="@Model.CurrentSort"
+    asp-route-pageIndex="@(Model.DeskQuote.PageIndex - 1)"
+    asp-route-currentFilter="@Model.CurrentFilter"
+    class="btn btn-outline-info @prevDisabled">
     Previous
 </a>
 <a asp-page="./Index"
-   asp-route-pageIndex="@(Model.DeskQuote.PageIndex + 1)"
-   class="btn btn-outline-info @nextDisabled">
+    asp-route-sortOrder="@Model.CurrentSort"
+    asp-route-pageIndex="@(Model.DeskQuote.PageIndex + 1)"
+    asp-route-currentFilter="@Model.CurrentFilter"
+    class="btn btn-outline-info @nextDisabled">
     Next
 </a>

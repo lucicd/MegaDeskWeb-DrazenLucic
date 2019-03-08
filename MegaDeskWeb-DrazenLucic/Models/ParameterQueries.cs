@@ -63,36 +63,36 @@ namespace MegaDeskWeb_DrazenLucic.Models
             return queryResults[0].Value;
         }
 
-        public decimal GetMinWidth()
+        public int GetMinWidth()
         {
             IQueryable<Parameter> paramQuery = from m in _context.Parameter select m;
             paramQuery = paramQuery.Where(s => s.Name.Equals("Min Width"));
             var queryResults = paramQuery.ToList();
-            return queryResults[0].Value;
+            return System.Convert.ToInt32(queryResults[0].Value);
         }
 
-        public decimal GetMaxWidth()
+        public int GetMaxWidth()
         {
             IQueryable<Parameter> paramQuery = from m in _context.Parameter select m;
             paramQuery = paramQuery.Where(s => s.Name.Equals("Max Width"));
             var queryResults = paramQuery.ToList();
-            return queryResults[0].Value;
+            return System.Convert.ToInt32(queryResults[0].Value);
         }
 
-        public decimal GetMinDepth()
+        public int GetMinDepth()
         {
             IQueryable<Parameter> paramQuery = from m in _context.Parameter select m;
             paramQuery = paramQuery.Where(s => s.Name.Equals("Min Depth"));
             var queryResults = paramQuery.ToList();
-            return queryResults[0].Value;
+            return System.Convert.ToInt32(queryResults[0].Value);
         }
 
-        public decimal GetMaxDepth()
+        public int GetMaxDepth()
         {
             IQueryable<Parameter> paramQuery = from m in _context.Parameter select m;
             paramQuery = paramQuery.Where(s => s.Name.Equals("Max Depth"));
             var queryResults = paramQuery.ToList();
-            return queryResults[0].Value;
+            return System.Convert.ToInt32(queryResults[0].Value);
         }
     }
 }

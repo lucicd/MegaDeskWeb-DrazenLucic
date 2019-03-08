@@ -1,25 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MegaDeskWeb_DrazenLucic.Models
 {
     public class DeskQuote
     {
+        [Display(Name = "Quote#")]
         public int ID { get; set; }
 
+        [StringLength(60, MinimumLength = 3)]
+        [Required]
         public string Customer { get; set; }
+
         [Display(Name = "Base Desk Price")]
         public decimal BaseDeskPrice { get; set; }
 
+        [Required]
         [Display(Name = "Order Date")]
         [DataType(DataType.Date)]
         public DateTime OrderDate { get; set; }
 
+        [Range(24, 96)]
         public int Width { get; set; }
+
+        [Range(12, 48)]
         public int Depth { get; set; }
 
         [Display(Name = "Surface Area Surcharge per Unit")]
@@ -34,14 +39,17 @@ namespace MegaDeskWeb_DrazenLucic.Models
         [Column(TypeName = "decimal(18, 2)")]
         public decimal DrawerSurcharge { get; set; }
 
+        [Required]
         [Display(Name = "Surface Material")]
         public string SurfaceMaterial { get; set; }
+
         [Display(Name = "Surface Material Surcharge")]
         [Column(TypeName = "decimal(18, 2)")]
         public decimal SurfaceMaterialSurcharge { get; set; }
 
         [Display(Name = "Production Time")]
         public int ProductionTime { get; set; }
+
         [Display(Name = "Rush Order Surcharge")]
         [Column(TypeName = "decimal(18, 2)")]
         public decimal RushOrderSurcharge { get; set; }

@@ -9,7 +9,7 @@
 
 <div>
     <table class="table table-bordered table-hover table-sm">
-        <thead class="thead-dark">
+        <thead class="thead-light">
             <tr>
                 <th scope="col" style="width: 50%">Description</th>
                 <th scope="col" style="width: 50%">Value</th>
@@ -156,6 +156,6 @@
     </table>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.DeskQuote.ID">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a class="btn btn-outline-info" asp-page="./Edit" asp-route-id="@Model.DeskQuote.ID">Edit</a>
+    <a class="btn btn-outline-info" asp-page="./Index">Back to List</a>
 </div>

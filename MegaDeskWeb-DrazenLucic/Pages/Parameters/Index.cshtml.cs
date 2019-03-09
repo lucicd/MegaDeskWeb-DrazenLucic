@@ -18,11 +18,67 @@ namespace MegaDeskWeb_DrazenLucic.Pages.Parameters
             _context = context;
         }
 
-        public IList<Parameter> Parameter { get;set; }
+        public string IDSort{ get; set;}
+        public string NameSort { get; set; }
+        public string ValueSort { get; set; }
+        public string CurrentFilter { get; set; }
+        public string CurrentSort { get; set; }
 
-        public async Task OnGetAsync()
+        public PaginatedList<Parameter> Parameter { get;set; }
+
+        public async Task OnGetAsync(string sortOrder, string currentFilter, string searchString, int? pageIndex)
         {
-            Parameter = await _context.Parameter.ToListAsync();
+            sortOrder = String.IsNullOrEmpty(sortOrder) ? "id_desc" : sortOrder;
+            CurrentSort = sortOrder;
+            IDSort = sortOrder == "ID" ? "id_desc" : "ID";
+            NameSort = sortOrder == "Name" ? "name_desc" : "Name";
+            ValueSort = sortOrder == "Value" ? "value_desc" : "Value";
+
+            if (searchString != null)
+            {
+                pageIndex = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            CurrentFilter = searchString;
+
+            var parameters = from m in _context.DeskQuote
+                             select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                parameters = parameters.Where(s => s.Customer.Contains(searchString)
+                                       || s.SurfaceMaterial.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    parameters = parameters.OrderByDescending(s => s.Customer);
+                    break;
+                case "Name":
+                    parameters = parameters.OrderBy(s => s.Customer);
+                    break;
+                case "value_desc":
+                    parameters = parameters.OrderByDescending(s => s.SurfaceMaterial);
+                    break;
+                case "Value":
+                    parameters = parameters.OrderBy(s => s.SurfaceMaterial);
+                    break;
+                case "id_desc":
+                    parameters = parameters.OrderByDescending(s => s.ID);
+                    break;
+                default:
+                    parameters = parameters.OrderBy(s => s.ID);
+                    break;
+            }
+
+            int pageSize = 5;
+            Parameter = await PaginatedList<Parameter>.CreateAsync(
+                parameters.AsNoTracking(), pageIndex ?? 1, pageSize);
         }
     }
 }

@@ -18,11 +18,30 @@ namespace MegaDeskWeb_DrazenLucic.Pages.Parameters
             _context = context;
         }
 
-        public IList<Parameter> Parameter { get;set; }
+        public string NameSort { get; set; }
 
-        public async Task OnGetAsync()
+        public PaginatedList<Parameter> Parameter { get;set; }
+
+        public async Task OnGetAsync(string sortOrder, int? pageIndex)
         {
-            Parameter = await _context.Parameter.ToListAsync();
+            NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            var parameters = from m in _context.Parameter
+                             select m;
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    parameters = parameters.OrderByDescending(s => s.Name);
+                    break;
+                default:
+                    parameters = parameters.OrderBy(s => s.Name);
+                    break;
+            }
+
+
+            int pageSize = 5;
+            ParameterQueries = await PaginatedList<DeskQuote>.CreateAsync(
+                parameters.AsNoTracking(), pageIndex ?? 1, pageSize);
         }
     }
 }
